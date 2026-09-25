@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+app:
+  mail:
+    enabled: false
+    retry-count: 1
+  notification:
+    channels:
+      email: active
+      telegram: active
+    quiet-hours: "23:00-06:00"
+
+logging:
+  level:
+    kz.iitu: DEBUG
