@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: spring-lab
+
+server:
+  port: 8080
+
+app:
+  owner: Akhmetkali Margulan
+  group: IS-2301
+  mail:
+    from: no-reply@iitu.kz
+    retry-count: 3
+    timeout: 5s
+    enabled: true
+  notification:
+    channels:
+      email: active
+      sms: inactive
+    quiet-hours: "22:00-07:00"
+
+logging:
+  level:
+    kz.iitu: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,configprops,conditions
