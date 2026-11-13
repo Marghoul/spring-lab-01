@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<header th:fragment="header">
+    <a th:href="@{/}"><b>Library catalogue</b></a>
+    <a th:href="@{/books}">Books</a>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}">Administration</a>
+
+    <span class="who" sec:authorize="isAuthenticated()">
+        Logged in as <b sec:authentication="name">anonymous</b>
+        <span sec:authentication="principal.authorities">[ROLE_USER]</span>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Log out</button>
+        </form>
+    </span>
+    <span class="who" sec:authorize="!isAuthenticated()">
+        <a th:href="@{/login}">Log in</a>
+    </span>
+</header>
+</body>
+</html>

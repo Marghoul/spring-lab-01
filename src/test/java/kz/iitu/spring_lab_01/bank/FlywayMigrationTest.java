@@ -23,7 +23,7 @@ class FlywayMigrationTest extends AbstractBankTest {
         // H2: Flyway also records a version-less "<< Flyway Schema History table created >>" row
         assertThat(history).extracting(r -> r.get("version"))
                 .filteredOn(v -> v != null)
-                .containsExactly("1", "2", "3", "4");
+                .containsExactly("1", "2", "3", "4", "5", "6", "7"); // V5-V7 added in lab08
         assertThat(history).allMatch(r -> Boolean.TRUE.equals(r.get("success")));
         assertThat(jdbc.queryForObject("SELECT status FROM accounts WHERE id = 1", String.class))
                 .isEqualTo("ACTIVE");

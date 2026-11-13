@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Book</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main>
+    <h1 th:text="${book.title}">Title</h1>
+    <p>Genre: <b th:text="${book.genre}">NOVEL</b></p>
+    <p>Year: <b th:text="${book.year}">2020</b></p>
+    <p><a th:href="@{/books}">Back to the list</a></p>
+</main>
+</body>
+</html>
