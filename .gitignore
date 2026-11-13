@@ -34,3 +34,6 @@ build/
 
 ### Lab 7 H2 file database ###
 data/
+
+### Word lock files ###
+~$*
