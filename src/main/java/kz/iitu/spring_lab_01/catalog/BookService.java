@@ -27,6 +27,12 @@ public class BookService {
         return books.findById(id);
     }
 
+    /** Like findById, but a missing book is an error (404 in the REST API). */
+    @Transactional(readOnly = true)
+    public Book byId(long id) {
+        return books.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+    }
+
     /** The rule travels with the method: any caller, not only /books, needs ROLE_ADMIN. */
     @PreAuthorize("hasRole('ADMIN')")
     @Transactional

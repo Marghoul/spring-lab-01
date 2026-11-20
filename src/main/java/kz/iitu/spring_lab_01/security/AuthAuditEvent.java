@@ -35,12 +35,18 @@ public class AuthAuditEvent {
     }
 
     public AuthAuditEvent(String username, String eventType, boolean success, String reason, String remoteAddr) {
+        this(username, eventType, success, reason, remoteAddr, LocalDateTime.now());
+    }
+
+    /** Explicit timestamp: used by tests and reports that need events on a given day. */
+    public AuthAuditEvent(String username, String eventType, boolean success, String reason, String remoteAddr,
+                          LocalDateTime createdAt) {
         this.username = username;
         this.eventType = eventType;
         this.success = success;
         this.reason = reason;
         this.remoteAddr = remoteAddr;
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = createdAt;
     }
 
     public Long getId() { return id; }
